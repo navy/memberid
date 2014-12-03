@@ -5,7 +5,7 @@ idconv is a user ID converter.
 ## Usage
 
 ```
-Usage: iconv -c <CONFIG> [OPTION] <ID>
+Usage: idconv -c <CONFIG> [OPTION] <ID>
 
   -c="": config file path (required)
   -from="": from type
@@ -16,7 +16,7 @@ Usage: iconv -c <CONFIG> [OPTION] <ID>
 
 ```json
 {
-    "<default_id>": {"<service1>": "<another_id1>", "<service2>": "<another_id2>"}
+    "<base_id>": {"<service1>": "<another_id1>", "<service2>": "<another_id2>"}
 }
 ```
 

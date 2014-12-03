@@ -2,46 +2,8 @@ package main
 
 import (
 	"encoding/json"
-	"flag"
-	"fmt"
 	"io/ioutil"
-	"log"
-	"os"
 )
-
-func main() {
-	var (
-		id   string
-		c    string
-		from string
-		to   string
-	)
-	flag.StringVar(&c, "c", "", "config file path (required)")
-	flag.StringVar(&from, "from", "", "from type")
-	flag.StringVar(&to, "to", "", "to type")
-
-	flag.Usage = func() {
-		fmt.Printf("Usage: iconv -c <CONFIG> [OPTION] <ID> \n\n")
-		flag.PrintDefaults()
-		os.Exit(1)
-	}
-
-	flag.Parse()
-
-	id = flag.Arg(0)
-	if c == "" || id == "" {
-		flag.Usage()
-	}
-
-	data, err := LoadJson(c)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	id = ConvertId(id, data, from, to)
-
-	fmt.Printf("%s\n", id)
-}
 
 func LoadJson(f string) (map[string]interface{}, error) {
 	file, err := ioutil.ReadFile(f)
@@ -49,27 +11,25 @@ func LoadJson(f string) (map[string]interface{}, error) {
 		return nil, err
 	}
 
-	var data map[string]interface{}
-	json.Unmarshal(file, &data)
+	var config map[string]interface{}
+	json.Unmarshal(file, &config)
 
-	return data, nil
+	return config, nil
 }
 
-func ConvertId(id string, data map[string]interface{}, from string, to string) string {
-	for baseId, _udata := range data {
-		udata := _udata.(map[string]interface{})
+func ConvertId(id string, config map[string]interface{}, from string, to string) string {
+	for baseId, _ := range config {
+		data := config[baseId].(map[string]interface{})
 
 		fromId := baseId
-		fromTmp, fromFound := udata[from]
-		if fromFound {
-			fromId = fromTmp.(string)
+		if fromVal, fromFound := data[from]; fromFound {
+			fromId = fromVal.(string)
 		}
 
 		if fromId == id {
 			toId := baseId
-			toTmp, toFound := udata[to]
-			if toFound {
-				toId = toTmp.(string)
+			if toVal, toFound := data[to]; toFound {
+				toId = toVal.(string)
 			}
 
 			id = toId
