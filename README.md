@@ -1,6 +1,10 @@
 # idconv
 
-idconv is a user ID converter.
+`idconv` is a user ID converter.
+
+## Installation
+
+You can download a binary from the [releases](https://github.com/navy/idconv/releases) and put in your `$PATH`.
 
 ## Usage
 

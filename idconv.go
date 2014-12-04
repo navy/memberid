@@ -11,7 +11,7 @@ func LoadConfig(f string) (map[string]map[string]string, error) {
 		return nil, err
 	}
 
-	var config map[string]map[string]string
+	config := map[string]map[string]string{}
 	json.Unmarshal(file, &config)
 
 	return config, nil

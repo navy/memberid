@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+var Version = "0.1.0"
+
 func main() {
 	var (
 		id   string
