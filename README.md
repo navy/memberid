@@ -34,7 +34,7 @@ Usage: idconv -c <CONFIG> [OPTION] <ID>
 }
 ```
 
-You can convert from base ID to the github ID with the `-to` option:
+You can convert to the github ID with the `-to` option:
 
 ```bash
 % idconv -c sample.json -to github jojo
@@ -48,7 +48,7 @@ You can also convert from the github ID with the `-from` option:
 jotaro.kujo
 ```
 
-If you specify undefined from/to value, use base ID instead:
+If you specify undefined from/to value, use the base ID instead:
 
 ```bash
 % idconv -c sample.json -from github -to google jotarok

@@ -11,7 +11,7 @@ type convertIdTest struct {
 	To       string
 }
 
-var config, err = LoadConfig("sample.json")
+var r, err = LoadConfig("sample.json")
 
 var convertIdTests = []convertIdTest{
 	{"jojo", "jojo", "", ""},
@@ -23,9 +23,9 @@ var convertIdTests = []convertIdTest{
 
 func TestConvertId(t *testing.T) {
 	for _, d := range convertIdTests {
-		r := ConvertId(d.Id, config, d.From, d.To)
-		if r != d.Expected {
-			t.Errorf("ConvertId Failed: `-from %s -to %s %s` -> %s (expect: %s)", d.From, d.To, d.Id, r, d.Expected)
+		result := r.ConvertId(d.Id, d.From, d.To)
+		if result != d.Expected {
+			t.Errorf("ConvertId Failed: `-from %s -to %s %s` -> %s (expect: %s)", d.From, d.To, d.Id, result, d.Expected)
 		}
 	}
 }

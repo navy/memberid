@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-var Version = "0.1.0"
+var Version = "0.1.1"
 
 func main() {
 	var (
@@ -33,12 +33,12 @@ func main() {
 		flag.Usage()
 	}
 
-	config, err := LoadConfig(c)
+	r, err := LoadConfig(c)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	id = ConvertId(id, config, from, to)
+	id = r.ConvertId(id, from, to)
 
 	fmt.Printf("%s\n", id)
 }
