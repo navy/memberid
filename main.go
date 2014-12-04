@@ -31,7 +31,7 @@ func main() {
 		flag.Usage()
 	}
 
-	config, err := LoadJson(c)
+	config, err := LoadConfig(c)
 	if err != nil {
 		log.Fatal(err)
 	}

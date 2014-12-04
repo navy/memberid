@@ -11,7 +11,7 @@ type convertIdTest struct {
 	To       string
 }
 
-var config, err = LoadJson("sample.json")
+var config, err = LoadConfig("sample.json")
 
 var convertIdTests = []convertIdTest{
 	{"jojo", "jojo", "", ""},
