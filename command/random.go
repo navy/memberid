@@ -37,7 +37,7 @@ func (c *RandomCommand) Run(fs *flag.FlagSet, r registry.Registry) {
 		return
 	}
 
-	rand.Seed(time.Now().Unix())
+	rand.Seed(time.Now().UTC().UnixNano())
 	id := ids[rand.Intn(len(ids))]
 
 	if c.To != "" {
