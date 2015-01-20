@@ -10,7 +10,7 @@ import (
 	"github.com/navy/memberid/registry"
 )
 
-var Version = "0.1.1"
+var Version = "0.2.0"
 
 type Command interface {
 	ConfigureFlags(fs *flag.FlagSet)
