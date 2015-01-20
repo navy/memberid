@@ -1,3 +1,12 @@
 {
-    "jojo": {"github": "jotarok", "facebook": "jotaro.kujo"}
+    "members": {
+        "joseph": {"facebook": "joseph.joestar"},
+        "jotaro": {"github": "jotarok", "facebook": "jotaro.kujo"},
+        "dio": {}
+    },
+    "group": {
+        "part1": ["dio"],
+        "part2": ["joseph"],
+        "part3": ["joseph", "jotaro", "dio"]
+    }
 }
