@@ -22,12 +22,13 @@ func main() {
 	var config string
 
 	commands := map[string]Command{
-		"resolve": new(command.ResolveCommand),
+		"list":    new(command.ListCommand),
 		"random":  new(command.RandomCommand),
+		"resolve": new(command.ResolveCommand),
 	}
 
 	flag.Usage = func() {
-		fmt.Printf("Usage: memberid <command> [-c <CONFIG>] ... \n\n")
+		fmt.Printf("Usage: memberid <COMMAND> [-c <CONFIG>] ... \n\n")
 		for name, cmd := range commands {
 			fmt.Printf("%s: %s\n", name, cmd.Help())
 			fs := newFlagSet(name, cmd, &config)

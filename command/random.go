@@ -11,21 +11,22 @@ import (
 )
 
 type RandomCommand struct {
-	To    string
 	Group string
+	To    string
 }
 
 func (c *RandomCommand) ConfigureFlags(fs *flag.FlagSet) {
+	fs.StringVar(&c.Group, "g", "", "group name")
 	fs.StringVar(&c.To, "to", "", "id-type to")
-	fs.StringVar(&c.Group, "group", "", "group name")
 }
 
 func (c *RandomCommand) Help() string {
-	return "[-to=<TO>] [-group=<GROUP>]"
+	return "[-g <GROUP>] [-to <TO>]"
 }
 
 func (c *RandomCommand) Run(fs *flag.FlagSet, r registry.Registry) {
 	var ids []string
+
 	if c.Group != "" {
 		ids = r.Ids(strings.Split(c.Group, ",")...)
 	} else {

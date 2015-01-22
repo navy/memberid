@@ -18,7 +18,7 @@ func (c *ResolveCommand) ConfigureFlags(fs *flag.FlagSet) {
 }
 
 func (c *ResolveCommand) Help() string {
-	return "[-from=<FROM>] [-to=<TO>] <ID>"
+	return "[-from <FROM>] [-to <TO>] <ID>"
 }
 
 func (c *ResolveCommand) Run(fs *flag.FlagSet, r registry.Registry) {
