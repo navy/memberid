@@ -9,16 +9,22 @@ You can download a binary from the [releases](https://github.com/navy/memberid/r
 ## Usage
 
 ```bash
-Usage: memberid <command> [-c <CONFIG>] ...
+Usage: memberid <COMMAND> [-c <CONFIG>] ...
 
-resolve: [-from=<FROM>] [-to=<TO>] <ID>
+random: [-g <GROUP>] [-to <TO>]
+  -c="memberid.json": Path to memberid.json file
+  -g="": group name
+  -to="": id-type to
+
+resolve: [-from <FROM>] [-to <TO>] <ID>
   -c="memberid.json": Path to memberid.json file
   -from="": id-type from
   -to="": id-type to
 
-random: [-to=<TO>] [-group=<GROUP>]
+list: [-g <GROUP>] [-to <TO>]
   -c="memberid.json": Path to memberid.json file
-  -group="": group name
+  -g="": group name
+  -shuffle=false: Shuffle ids
   -to="": id-type to
 ```
 
@@ -97,16 +103,40 @@ You can use the `-to` option to convert ID:
 jotaro.kujo
 ```
 
-You can specify the group with the `-group` option:
+You can specify the group with the `-g` option:
 
 ```bash
-% memberid random -c sample.json -group=part1
+% memberid random -c sample.json -g=part1
 dio
 ```
 
 You can also specify multi groups using `,`:
 
 ```bash
-% memberid random -c sample.json -group=part1,part2
+% memberid random -c sample.json -g=part1,part2
 joseph
 ```
+
+### list command
+
+You can get the space-separated IDs list:
+
+```bash
+% memberid list -c sample.json
+joseph jotaro dio
+```
+
+You can shuffle the list with `-shuffle` option:
+
+```bash
+% memberid list -c sample.json -shuffle
+jotaro dio joseph
+```
+
+You can specify the group with the `-g` option:
+
+```bash
+% memberid list -c sample.json -g part1,part2
+dio joseph
+```
+
