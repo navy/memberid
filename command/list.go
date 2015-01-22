@@ -45,7 +45,7 @@ func (c *ListCommand) Run(fs *flag.FlagSet, r registry.Registry) {
 		}
 	}
 
-	fmt.Printf("%v\n", ids)
+	fmt.Printf("%s\n", strings.Join(ids, " "))
 }
 
 func shuffle(ids []string) []string {
